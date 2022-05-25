@@ -1,6 +1,6 @@
 [package]
 name = "blst"
-version = "0.3.6"
+version = "0.3.7"
 authors = ["sean-sn <sean@supranational.net>"]
 edition = "2018"
 license = "Apache-2.0"
@@ -37,11 +37,12 @@ no-threads = []
 
 [build-dependencies]
 cc = "1.0"
+[target.'cfg(target_env = "msvc")'.build-dependencies]
+which = "^4.0"
 glob = "0.3"
 
 [dependencies]
-zeroize = { version = "^1.1, <1.4", features = ["zeroize_derive"] }
-zeroize_derive = "<1.2"
+zeroize = { version = "^1.1", features = ["zeroize_derive"] }
 
 [target.'cfg(not(target_arch = "wasm32"))'.dependencies]
 threadpool = "^1.8.1"
